@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title> @yield('page-title')</title>
+        <title> @yield('page-title', 'page-comics')</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
