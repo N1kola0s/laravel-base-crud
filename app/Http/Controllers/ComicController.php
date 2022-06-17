@@ -36,17 +36,42 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        /* visualizzare le richieste */
+
         /* dd($request->all()); */
-        $comic = new Comic();
+
+        /* validare i dati */
+        $validated_data= $request->validate([
+            'title'=>'required|max:100',
+            'description'=>'nullable',
+            'thumb'=>'required',
+            'price'=>'nullable',
+            'series'=>'nullable',
+            'sale_date'=>'nullable',
+            'type'=>'nullable'
+
+        ]);
+        
+        /* dd($validated_data); */
+
+        /* creazione istanza del modello */
+
+       /*  $comic = new Comic();
         $comic-> title = $request -> title;
         $comic-> description = $request -> description;
         $comic-> thumb = $request ->thumb;
         $comic -> price = $request -> price;
         $comic -> series = $request ->series;
-        $comic-> series = $request->sale_date;
+        $comic-> sale_date = $request->sale_date;
         $comic-> type = $request->type;
-        $comic -> save();
+        $comic -> save(); */
 
+        /* $validated_data = $request->validated(); */
+        
+        Comic::create($validated_data);
+        
+
+        /* pattern POST-REDIRECT-GET */
         return redirect()->route('comics.index');
         
     }
