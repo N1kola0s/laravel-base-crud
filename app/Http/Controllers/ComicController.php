@@ -67,7 +67,7 @@ class ComicController extends Controller
         $comic -> save(); */
 
         /* $validated_data = $request->validated(); */
-        
+
         Comic::create($validated_data);
         
 
@@ -96,7 +96,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view ('comics.edit', compact('comic'));
     }
 
     /**
@@ -108,7 +108,7 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+       dd($request->all());
     }
 
     /**
