@@ -10,15 +10,16 @@
 <div class="container">
     <table class="table">
         <thead>
-            <tr class="text-uppercase">
-                <th>id</th>
-                <th>title</th>
-                <th>description</th>
-                <th>thumb</th>
-                <th>price</th>
-                <th>series</th>
-                <th>sale_date</th>
-                <th>type</th>
+            <tr class="text-uppercase text-center">
+                <th>Id</th>
+                <th>Titolo</th>
+                <th>Descrizione</th>
+                <th>Thumb</th>
+                <th>Prezzo</th>
+                <th>Serie</th>
+                <th>Data di vendita</th>
+                <th>Tipo</th>
+                <th>Azione</th>
             </tr>
         </thead>
         <tbody>
@@ -32,10 +33,16 @@
                 <td>{{$comic->series}}</td>
                 <td>{{$comic->sale_date}}</td>
                 <td>{{$comic->type}}</td>
-                <td>
+                <td class="d-flex justify-content-center align-items-center flex-column"> 
 
-                    <a href="{{route('comics.show', $comic->id)}}">Visualizza</a>
-                    <a href="{{route('comics.edit', $comic->id)}}">Modifica</a>
+                    <a class="btn btn-success" href="{{route('comics.show', $comic->id)}}">Visualizza</a>
+                    <a class="btn btn-warning my-2" href="{{route('comics.edit', $comic->id)}}">Modifica</a>
+
+                    <form action="{{route('comics.destroy', $comic->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Rimuovi</button>
+                    </form>
 
                 </td>
             </tr>
