@@ -12177,3 +12177,7 @@ fieldset:disabled .btn {
   background-color: #eee9e9;
 }
 
+.w_btn {
+  width: 100px;
+}
+
